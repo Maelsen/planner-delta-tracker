@@ -1,0 +1,32 @@
+# Secrets and credentials
+.env
+token_cache.json
+local.settings.json
+
+# Reports (local test output)
+report_*.html
+preview_report.html
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
