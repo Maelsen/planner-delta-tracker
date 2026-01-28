@@ -1,12 +1,17 @@
 name: Weekly Planner Report
 
 on:
-  # Every Monday at 06:40 UTC (≈ 07:40 CET → email arrives ~08:00)
+  # Run daily at 06:40 UTC to check if today is the scheduled day
   schedule:
-    - cron: '40 6 * * 1'
+    - cron: '40 6 * * *'
 
   # Manual trigger via GitHub UI
   workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Run regardless of schedule (true/false)'
+        required: false
+        default: 'false'
 
 jobs:
   run-report:
@@ -16,15 +21,44 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check if today is scheduled day
+        id: check_schedule
+        run: |
+          # Read schedule from settings.json
+          if [ -f "settings.json" ]; then
+            SCHEDULE_DAY=$(cat settings.json | python3 -c "import sys, json; print(json.load(sys.stdin).get('schedule_day', 'monday'))")
+          else
+            SCHEDULE_DAY="monday"
+          fi
+
+          # Get current day of week (lowercase)
+          TODAY=$(date -u +%A | tr '[:upper:]' '[:lower:]')
+
+          echo "Scheduled day: $SCHEDULE_DAY"
+          echo "Today is: $TODAY"
+
+          # Check if we should run
+          FORCE_RUN="${{ github.event.inputs.force_run }}"
+          if [ "$FORCE_RUN" = "true" ] || [ "$TODAY" = "$SCHEDULE_DAY" ]; then
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "Running report!"
+          else
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            echo "Skipping - not the scheduled day"
+          fi
+
       - name: Set up Python
+        if: steps.check_schedule.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.check_schedule.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
       - name: Run Delta Tracker
+        if: steps.check_schedule.outputs.should_run == 'true'
         env:
           TENANT_ID: ${{ secrets.TENANT_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
@@ -36,6 +70,7 @@ jobs:
         run: python main.py
 
       - name: Commit updated snapshot
+        if: steps.check_schedule.outputs.should_run == 'true'
         run: |
           git config user.name "Planner Bot"
           git config user.email "bot@alpineleadership.ch"

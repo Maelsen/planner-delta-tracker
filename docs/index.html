@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner Delta Tracker - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Modal -->
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <h2>Planner Delta Tracker</h2>
+            <p>Admin-Bereich</p>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="Passwort eingeben" required>
+                <button type="submit">Anmelden</button>
+            </form>
+            <p id="password-error" class="error hidden">Falsches Passwort</p>
+        </div>
+    </div>
+
+    <!-- Setup Modal (first time) -->
+    <div id="setup-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Ersteinrichtung</h2>
+            <p>Bitte richten Sie den Admin-Zugang ein.</p>
+            <form id="setup-form">
+                <div class="form-group">
+                    <label for="setup-password">Admin-Passwort festlegen:</label>
+                    <input type="password" id="setup-password" placeholder="Neues Passwort" required minlength="4">
+                </div>
+                <div class="form-group">
+                    <label for="setup-token">GitHub Personal Access Token:</label>
+                    <input type="password" id="setup-token" placeholder="ghp_xxxx..." required>
+                    <small>Benötigt: <code>repo</code> Scope. <a href="https://github.com/settings/tokens/new?scopes=repo&description=Planner%20Admin" target="_blank">Token erstellen</a></small>
+                </div>
+                <div class="form-group">
+                    <label for="setup-repo">Repository (owner/repo):</label>
+                    <input type="text" id="setup-repo" placeholder="username/microsoft-planner-automation" required>
+                </div>
+                <button type="submit">Speichern</button>
+            </form>
+            <p id="setup-error" class="error hidden"></p>
+        </div>
+    </div>
+
+    <!-- Main Admin Panel -->
+    <div id="admin-panel" class="hidden">
+        <header>
+            <h1>Planner Delta Tracker</h1>
+            <p class="subtitle">Admin-Steuerung</p>
+        </header>
+
+        <main>
+            <!-- Status Section -->
+            <section class="card">
+                <h2>Status</h2>
+                <div id="status-content">
+                    <div class="status-item">
+                        <span class="label">Nächster Report:</span>
+                        <span id="next-report">Wird geladen...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Letzter Workflow:</span>
+                        <span id="last-run">Wird geladen...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="card">
+                <h2>Zeitplan</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schedule-day">Wochentag:</label>
+                        <select id="schedule-day">
+                            <option value="monday">Montag</option>
+                            <option value="tuesday">Dienstag</option>
+                            <option value="wednesday">Mittwoch</option>
+                            <option value="thursday">Donnerstag</option>
+                            <option value="friday">Freitag</option>
+                            <option value="saturday">Samstag</option>
+                            <option value="sunday">Sonntag</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="schedule-hour">Uhrzeit (ca.):</label>
+                        <select id="schedule-hour">
+                            <option value="6">06:00 Uhr</option>
+                            <option value="7">07:00 Uhr</option>
+                            <option value="8">08:00 Uhr</option>
+                            <option value="9">09:00 Uhr</option>
+                            <option value="10">10:00 Uhr</option>
+                            <option value="11">11:00 Uhr</option>
+                            <option value="12">12:00 Uhr</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="hint">Der Report wird jeden gewählten Tag um ca. diese Uhrzeit gesendet.</p>
+            </section>
+
+            <!-- Recipients Section -->
+            <section class="card">
+                <h2>E-Mail-Empfänger</h2>
+                <div id="recipients-list">
+                    <!-- Recipients will be added here -->
+                </div>
+                <div class="add-recipient">
+                    <input type="email" id="new-recipient" placeholder="email@example.com">
+                    <button id="add-recipient-btn">Hinzufügen</button>
+                </div>
+            </section>
+
+            <!-- Actions Section -->
+            <section class="card">
+                <h2>Aktionen</h2>
+                <div class="actions">
+                    <button id="save-btn" class="primary">Einstellungen speichern</button>
+                    <button id="trigger-btn" class="secondary">Jetzt Report senden</button>
+                </div>
+                <p id="action-status" class="status-message hidden"></p>
+            </section>
+        </main>
+
+        <footer>
+            <button id="logout-btn" class="text-btn">Abmelden</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
