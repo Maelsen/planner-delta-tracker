@@ -79,6 +79,11 @@ async function githubAPI(endpoint, options = {}) {
         throw new Error(error.message || `GitHub API error: ${response.status}`);
     }
 
+    // Some endpoints (e.g. workflow dispatch) return 204 No Content
+    if (response.status === 204 || response.headers.get('content-length') === '0') {
+        return {};
+    }
+
     return response.json();
 }
 
