@@ -1,7 +1,9 @@
 {
-  "recipients": [],
+  "recipients": [
+    "marlinwie@gmail.com"
+  ],
   "schedule_day": "monday",
   "schedule_hour": 8,
   "admin_password_hash": "7bff89fa462bd885d4df54b06b2e88762826db507d7a7a88e1aa26705f49bbc3",
-  "sha": "3c7727342b7abeb303da82268d3f013fea442212"
+  "sha": "70869a4942f296aa0630a79f0baeb355419d5ba7"
 }
