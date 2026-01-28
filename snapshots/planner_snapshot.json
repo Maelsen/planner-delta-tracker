@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-01-28T15:23:27.137866Z",
+  "created_at": "2026-01-28T15:55:53.060072Z",
   "plan_id": null,
   "task_count": 176,
   "tasks": [
@@ -114,11 +114,11 @@
       "assignees_str": "Oliver Wirths",
       "percent_complete": 0,
       "created_date": "2026-01-22T07:01:01.5553589Z",
-      "due_date": "2026-01-28T10:00:00Z",
+      "due_date": "2026-02-04T10:00:00Z",
       "start_date": null,
       "priority": 5,
       "order_hint": "8584325416839631057PB",
-      "description": "28.02.2026 CREATE (nach Referral durch Mirko Kleingriess)",
+      "description": "28.02.2026 CREATE – Proposal (mündlich gemacht) - er klärt Budgetrahmen \r\n04.02.2026 PROPOSE – Call zur Finalisierung ggf. mit M Kleingriess",
       "checklist_count": 0,
       "conversation_thread_id": null,
       "has_description": true
@@ -554,13 +554,13 @@
       "assignees_str": "Oliver Wirths",
       "percent_complete": 0,
       "created_date": "2025-12-09T11:25:47.7486337Z",
-      "due_date": "2026-01-26T10:00:00Z",
+      "due_date": "2026-02-25T10:00:00Z",
       "start_date": null,
       "priority": 5,
       "order_hint": "8584363273377289530",
-      "description": "10.12.25 kurzer Call – Proposal schicken und nochmal melden, will mich rüber handeln statt Kontakt herstellen \r\nxx.12.25 Hat Gespräch gehabt mit Philipp Arndt, vllt meldet er sich. \r\nLEARNING: Indirekte Gespräche haben noch NIE etwas gebracht. Wenn das vorgeschlagen wird immer darauf bestehen, direkt den Kontakt herzustellen bzw. zu fragen, ob man selbst nachfragen darf. \r\n19.01.26 Ansprache über LinkedIn HAT was gebracht - er meldet sich mit Terminvorschlägen.\r\n28.01.26 Termin am Nachmittag soll von ihm geschickt werden",
+      "description": "10.12.25 kurzer Call – Proposal schicken und nochmal melden, will mich rüber handeln statt Kontakt herstellen \r\nxx.12.25 Hat Gespräch gehabt mit Philipp Arndt, vllt meldet er sich. \r\nLEARNING: Indirekte Gespräche haben noch NIE etwas gebracht. Wenn das vorgeschlagen wird immer darauf bestehen, direkt den Kontakt herzustellen bzw. zu fragen, ob man selbst nachfragen darf. \r\n19.01.26 Ansprache über LinkedIn HAT was gebracht - er meldet sich mit Terminvorschlägen.\r\n28.01.26 Gutes Sales Gespräch\r\n25.02.26 Folgetermin nach Sales Gespräch",
       "checklist_count": 0,
-      "conversation_thread_id": null,
+      "conversation_thread_id": "AAQkAGJmZGU4ZjhkLWQ4NDItNGM4Yy05M2Y5LTgwOWE1ZjFkMGY1YwMkABAATmCzT7TaW0OoCpTmU57vqxAATmCzT7TaW0OoCpTmU57vqw==",
       "has_description": true
     },
     {
