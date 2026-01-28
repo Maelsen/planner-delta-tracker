@@ -1,9 +1,10 @@
 {
   "recipients": [
-    "oliver.wirths@alpineleadership.ch"
+    "oliver.wirths@alpineleadership.ch",
+    "julia.berhard@alpineleadership.ch"
   ],
   "schedule_day": "monday",
-  "schedule_hour": 8,
+  "schedule_hour": 7,
   "admin_password_hash": "7bff89fa462bd885d4df54b06b2e88762826db507d7a7a88e1aa26705f49bbc3",
-  "sha": "8a21c6e5e2f568fb366f5ccf9b14e70608e30192"
+  "sha": "c4ed5837636d15d8cd5a9c85a38c06dd39c2946f"
 }
