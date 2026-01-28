@@ -1,10 +1,9 @@
 name: Weekly Planner Report
 
 on:
-  # TEST: Run at 09:40 and 09:45 UTC (= 10:40 and 10:45 CET) for testing
+  # Every Monday at 06:40 UTC (≈ 07:40 CET → email arrives ~08:00)
   schedule:
-    - cron: '40 9 28 1 *'
-    - cron: '45 9 28 1 *'
+    - cron: '40 6 * * 1'
 
   # Manual trigger via GitHub UI
   workflow_dispatch:
